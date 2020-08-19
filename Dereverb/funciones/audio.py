@@ -1,4 +1,5 @@
-#Audio import. Número de muestras inicial fijo 24000. (Próximamente detector de silencio)
+import librosa 
+import numpy as np
 
 def audio_import(nom_audio,largo):
   display=nom_audio
