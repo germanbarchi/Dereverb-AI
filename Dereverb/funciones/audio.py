@@ -18,6 +18,6 @@ def audio_import(nom_audio,largo):
   #Normalizar según percentil 95%
 
   norm_val = np.quantile(np.abs(x_trim),0.95)
-  x_norm = x/norm_val
+  x_norm = x_trim/norm_val
 
   return x_norm,norm_val
