@@ -1,5 +1,6 @@
 import librosa 
 import numpy as np
+import scipy 
 
 def audio_import(nom_audio,largo):
   display=nom_audio
