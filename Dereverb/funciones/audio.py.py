@@ -15,9 +15,13 @@ def audio_import(nom_audio,largo):
   else: 
     x_trim=x[inicio:corte]
 
-  #Normalizar según percentil 95%
+  return x_trim 
 
-  norm_val = np.quantile(np.abs(x_trim),0.95)
-  x_norm = x/norm_val
+#Normalizar según percentil 95%
+
+def percentil_95(all_audios_):
+
+  norm_val = np.quantile(np.abs(all_audios_),0.95)
+  all_audios_norm = [x/norm_val for x in all_audios_]
 
   return x_norm
