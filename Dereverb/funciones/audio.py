@@ -21,5 +21,3 @@ def audio_import(nom_audio,largo):
   x_norm = x/norm_val
 
   return x_norm,norm_val
-
-  ##
