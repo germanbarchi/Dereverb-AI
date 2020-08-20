@@ -20,4 +20,4 @@ def audio_import(nom_audio,largo):
   norm_val = np.quantile(np.abs(x_trim),0.95)
   x_norm = x/norm_val
 
-  return x_norm
+  return x_norm,norm_val
