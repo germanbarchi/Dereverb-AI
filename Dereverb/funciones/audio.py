@@ -21,3 +21,10 @@ def audio_import(nom_audio,largo):
   x_norm = x_trim/norm_val
 
   return x_norm,norm_val
+
+  def convolve(x,reverb,largo):
+  
+    convol=scipy.signal.convolve(x,reverb,mode='full', method='fft')
+    convol_trim=convol[:largo]
+
+    return convol_trim
