@@ -30,4 +30,6 @@ def convolve(x,reverb,largo):
 
   return convol_trim
 
-###
+def func (x):
+
+  return x
