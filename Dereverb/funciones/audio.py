@@ -24,7 +24,7 @@ def audio_import(nom_audio,largo):
   return x_norm,norm_val
 
 
-def import_s_silencio (nom_audio,corte):  
+def import_cs (nom_audio,corte):  
 
   x,fs= librosa.core.load(nom_audio,sr=16000)
   largo_audio=len(x)
@@ -37,7 +37,10 @@ def import_s_silencio (nom_audio,corte):
   else: 
     x_trim=x[:corte]
 
-  return x_trim
+  norm_val = np.quantile(np.abs(x_trim),0.95)
+  x_norm = x_trim/norm_val
+
+  return x_norm
 
 def convolve(x,reverb_path,largo):
   
