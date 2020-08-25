@@ -41,7 +41,7 @@ def import_s_silencio (nom_audio,corte):
 
 def convolve(x,reverb_path,largo):
   
-  reverb,fs= librosa.core.load(reverb_path),sr=16000)
+  reverb,fs= librosa.core.load(reverb_path,sr=16000)
   convol=scipy.signal.convolve(x,reverb,mode='full', method='fft')
   convol_trim=convol[:largo]
 
