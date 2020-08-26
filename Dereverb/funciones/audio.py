@@ -50,9 +50,20 @@ def convolve(x,reverb_path,largo):
 
   return convol_trim
 
-def func (x):
+def split (nom_audio,largo,solapamiento):
 
-  return x
+  lista=[]
+  x_cut= librosa.core.load(nom_audio,sr=16000) 
+  leng=len(x_cut)
+  dif=largo-solapamiento
+  i=0
+  sup=largo
+  while sup<leng:
+    y=x_cut[i*dif:sup]
+    lista.append(y)
+    i=i+1
+    sup=(i*dif)+largo
 
+  return lista
 
 
