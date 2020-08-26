@@ -63,7 +63,7 @@ def split (nom_audio,largo,solapamiento):
     lista.append(y)
     i=i+1
     sup=(i*dif)+largo
-  lista=np.array(lista)
+  lista_array=np.array(lista)
   
   return lista_array
 
