@@ -42,9 +42,8 @@ def import_cs (nom_audio,corte):
 
   return x_norm
 
-def convolve(x,reverb_path,largo):
+def convolve(x,reverb,largo):
   
-  reverb,fs= librosa.core.load(reverb_path,sr=16000)
   convol=scipy.signal.convolve(x,reverb,mode='full', method='fft')
   convol_trim=convol[:largo]
 
