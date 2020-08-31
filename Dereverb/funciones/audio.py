@@ -23,6 +23,25 @@ def audio_import(nom_audio,largo):
 
   return x_norm,norm_val
 
+
+def import_cs (nom_audio,corte):  
+
+  x,fs= librosa.core.load(nom_audio,sr=16000)
+  largo_audio=len(x)
+
+  if largo_audio<corte:
+    
+    padding= corte-largo_audio
+    x_trim=np.pad(x,(0,padding),'constant',constant_values=0)   
+    
+  else: 
+    x_trim=x[:corte]
+
+  norm_val = np.quantile(np.abs(x_trim),0.95)
+  x_norm = x_trim/norm_val
+
+  return x_norm
+
 def convolve(x,reverb,largo):
   
   convol=scipy.signal.convolve(x,reverb,mode='full', method='fft')
@@ -30,9 +49,22 @@ def convolve(x,reverb,largo):
 
   return convol_trim
 
-def func (x):
+def split (nom_audio,largo,solapamiento,sr):
 
-  return x
+  lista=[]
+  x_cut,fs= librosa.core.load(nom_audio,sr) 
+  leng=len(x_cut)
+  dif=largo-solapamiento
+  i=0
+  sup=largo
+  while sup<leng:
+    y=x_cut[i*dif:sup]
+    norm_val = np.quantile(np.abs(y),0.95)
+    x_norm = y/norm_val
+    lista.append(x_norm)
+    i=i+1
+    sup=(i*dif)+largo
+    
+  return lista
 
-  %%
 
