@@ -49,7 +49,7 @@ def convolve(x,reverb,largo):
 
   return convol_trim
 
-def split (nom_audio,largo,solapamiento,sr):
+def split (nom_audio,largo,solapamiento,sr,norm_val):
 
   lista=[]
   x_cut,fs= librosa.core.load(nom_audio,sr) 
