@@ -39,7 +39,7 @@ def cnn_2(N):
   return model
 
 
-def cnn_3(N)
+def cnn_3(N):
 
   N_basis = 128
   win_size = 512
