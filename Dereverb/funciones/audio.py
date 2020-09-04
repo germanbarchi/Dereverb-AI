@@ -58,8 +58,7 @@ def split (nom_audio,largo,solapamiento,sr):
   i=0
   sup=largo
   while sup<leng:
-    y=x_cut[i*dif:sup]
-    norm_val = np.quantile(np.abs(y),0.95)
+    y=x_cut[i*dif:sup]    
     x_norm = y/norm_val
     lista.append(x_norm)
     i=i+1
