@@ -26,10 +26,10 @@ def cnn_2(N):
   enc = tfkl.Conv1D(256,512,strides=128)(layer_in)
   enc = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(enc)
   enc = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(enc)
-  enc = tfkl.MaxPooling1D(2)
+  enc = tfkl.MaxPooling1D(2)(enc)
   enc = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(enc)
   enc = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(enc)
-  dec = tfkl.UpSampling1D(2)
+  dec = tfkl.UpSampling1D(2)(enc)
   dec = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(dec)
   dec = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(dec)
   dec = tfkl.Conv1D(256,3,activation='relu',padding='SAME')(dec)
@@ -49,5 +49,7 @@ def cnn_3(N):
   frame_encoder = tfkl.Conv1D(N_basis,win_size,hop_size,use_bias=False)(audio_in)
   frame_encoder = tf.expand_dims(frame_encoder,axis=-2)
   frame_decoder = tfkl.Conv2DTranspose(1,(win_size,1),(hop_size,1),use_bias=False)(frame_encoder)
+  frame_decoder= tf.squeeze(frame_decoder,axis=-1)
   model = tf.keras.Model(inputs=[audio_in],outputs=[frame_decoder])
   return model
+
