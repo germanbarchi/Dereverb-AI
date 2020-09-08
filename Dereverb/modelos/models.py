@@ -34,7 +34,7 @@ def cnn_2(N):
   dec = tfkl.Conv1D(64,3,activation='relu',padding='SAME')(dec)
   dec = tfkl.Conv1D(256,3,activation='relu',padding='SAME')(dec)
   dec = tfkl.Conv1D(512,1,activation='relu',padding='SAME')(dec)
-  out = overlap_and_add(dec,128)
+  out = overlap_and_add(dec,128)(dec)
   model = tf.keras.Model(inputs=[layer_in],outputs=[out])
   return model
 
